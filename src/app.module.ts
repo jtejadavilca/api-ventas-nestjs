@@ -10,7 +10,6 @@ const mongodbStrCn = 'mongodb://localhost:27017/ventas';
   imports: [
     MongooseModule.forRoot(mongodbStrCn, {useNewUrlParser: true}),
     ControllersModule,
-    DatabaseModule,
   ],
   providers: [],
 })

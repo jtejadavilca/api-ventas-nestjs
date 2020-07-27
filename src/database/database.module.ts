@@ -4,9 +4,7 @@ import { ProductoSchema } from './schemas/producto.schema';
 
 @Module({
     imports: [
-        MongooseModule.forFeature([
-            { name: 'Producto', schema: ProductoSchema }
-        ])
+        
     ],
 })
 export class DatabaseModule {}

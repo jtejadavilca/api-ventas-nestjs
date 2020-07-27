@@ -10,29 +10,33 @@ export class ProductoController {
     constructor( private readonly productoservice: ProductoService ) { }
 
     @Get()
-    getProductos(): IProducto[] {
-        return this.productoservice.getProductos();
+    async getProductos(): Promise<IProducto[]> {
+        const productos = await this.productoservice.getProductos();
+        return productos;
     }
 
-    
     @Get(':id')
-    getProducto(@Param('id') id: string): IProducto {
-        return this.productoservice.getProducto( id );
+    async getProducto(@Param('id') id: string): Promise<IProducto> {
+        const producto = await this.productoservice.getProducto( id );
+        return producto;
     }
 
     @Post()
-    createProducto( @Body() producto: ProductoDto ): IProducto {
-        return this.productoservice.createProducto( producto );
+    async createProducto( @Body() productoDTO: ProductoDto ): Promise<IProducto> {
+        const producto = await this.productoservice.createProducto( productoDTO );
+        return producto;
     }
 
     @Put(':id')
     updateProducto( @Param('id') id: string, @Body() producto: ProductoDto ): IProducto {
-        return this.productoservice.updateProducto( id, producto );
+        // return this.productoservice.updateProducto( id, producto );
+        return;
     }
 
     @Delete(':id')
-    deleteProducto( @Param('id') id: string ): IProducto {
-        return this.productoservice.deleteProducto( id );
+    async deleteProducto( @Param('id') id: string ): Promise<IProducto> {
+        const producto = await this.productoservice.deleteProducto( id );
+        return producto;
     }
 
 }
